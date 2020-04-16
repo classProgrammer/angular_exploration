@@ -1,0 +1,17 @@
+<div class="center-screen">
+  <mat-card class="the-container">
+    <mat-card-header>
+      <mat-card-title>{{photobook.title}}</mat-card-title>
+      <mat-card-subtitle>{{photobook.subtitle}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="">
+        <mat-grid-list cols="{{photobook.columns}}" rowHeight="{{photobook.rowHeight}}"  gutterSize="{{photobook.gutterSize}}">
+          <mat-grid-tile [ngClass]="{scrollable: tile.edit}" *ngFor="let tile of photobook.images" rowspan="{{tile.rows}}" colspan="{{tile.cols}}" >
+            <div>
+              <img width="{{tile.width}}" src={{tile.src}}>
+            </div>
+          </mat-grid-tile>
+        </mat-grid-list>
+    </mat-card-content>
+  </mat-card>
+</div>

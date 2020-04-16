@@ -1,0 +1,99 @@
+<div class="center-screen">
+  <mat-card class="the-container">
+<!--    container Heading-->
+    <mat-card-header>
+      <mat-card-title>{{photobook.title}}</mat-card-title>
+      <mat-card-subtitle>{{photobook.subtitle}}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content class="">
+        <mat-grid-list cols="{{photobook.columns}}" rowHeight="{{photobook.rowHeight}}"  gutterSize="{{photobook.gutterSize}}">
+<!--          Images-->
+          <mat-grid-tile [ngClass]="{scrollable: tile.edit}" *ngFor="let tile of photobook.images" rowspan="{{tile.rows}}" colspan="{{tile.cols}}" >
+<!--            view image-->
+            <div *ngIf="!tile.edit">
+              <img width="{{tile.width}}" src={{tile.src}}>
+              <div class="button-container">
+                <button (click)="edit(tile)" class="image-button" mat-mini-fab matTooltip="Edit Image Tile">
+                  <mat-icon>edit</mat-icon>
+                </button>
+
+                <button (click)="remove(tile)" class="image-button-delete" mat-mini-fab matTooltip="Delete Image Tile">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </div>
+<!--            edit image-->
+            <div *ngIf="tile.edit" class="div-overflow">
+              <mat-form-field>
+                <mat-label>Rows</mat-label>
+                <input matInput [(ngModel)]="tile.rows">
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Columns</mat-label>
+                <input matInput [(ngModel)]="tile.cols">
+              </mat-form-field>
+              <br>
+              <mat-form-field>
+                <mat-label>Image Size</mat-label>
+                <input matInput [(ngModel)]="tile.width">
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Image Source</mat-label>
+                <input matInput [(ngModel)]="tile.src">
+              </mat-form-field>
+              <br>
+              <button class="give-me-some-space" (click)="close(tile)" mat-raised-button matTooltip="Done with Editing">
+                Done
+              </button>
+            </div>
+          </mat-grid-tile>
+<!--          Add Image-->
+          <mat-grid-tile class="add-menu" rowspan="1" colspan="2" >
+              <button (click)="addTile()" mat-mini-fab matTooltip="Add Image Tile">
+                <mat-icon>add</mat-icon>
+              </button>
+          </mat-grid-tile>
+        </mat-grid-list>
+    </mat-card-content>
+<!--    Edit Grid Settings-->
+    <mat-card-actions class="mat-actions">
+      <div class="scrollable-action">
+          <mat-form-field>
+            <mat-label>Columns</mat-label>
+            <input matInput [(ngModel)]="photobook.columns"  min="1" matTooltip="Number of Columns the Image Takes">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Gutter Size</mat-label>
+            <input matInput [(ngModel)]="photobook.gutterSize" matTooltip="Space Between the Tiles">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Row Height</mat-label>
+            <input matInput [(ngModel)]="photobook.rowHeight" matTooltip="Height of a Row">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Title</mat-label>
+            <input matInput [(ngModel)]="photobook.title" matTooltip="Title of the Photo Book">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Subtitle</mat-label>
+            <input matInput [(ngModel)]="photobook.subtitle" matTooltip="Subtitle of the Photo Book">
+          </mat-form-field>
+
+          <button class="give-me-more-space" (click)="savePhotobook()" mat-mini-fab matTooltip="Save Settings">
+            <mat-icon>save</mat-icon>
+          </button>
+
+          <button class="give-me-more-space" (click)="deletePhotobook()" mat-mini-fab matTooltip="Delete Photo Book">
+            <mat-icon>delete</mat-icon>
+          </button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>

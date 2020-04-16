@@ -1,0 +1,57 @@
+.center-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 1em;
+}
+
+.main {
+  width: 100%;
+  justify-content: center;
+}
+
+.the-container {
+  width: 100%;
+  max-width: 1600px;
+  padding: 0.4em;
+}
+
+.mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+.image-button {
+  display: none;
+}
+.image-button-delete {
+  display: none;
+}
+
+.give-me-some-space {
+  margin-left: 8px;
+}
+
+.button-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+mat-grid-tile:hover .image-button {
+  display: inline;
+  margin-right: 0.5em;
+}
+
+mat-grid-tile:hover .image-button-delete {
+  display: inline;
+}
+.scrollable {
+  overflow-y: scroll;
+}
+
+.add-menu {
+  background: whitesmoke;
+}

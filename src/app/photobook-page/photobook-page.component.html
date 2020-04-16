@@ -1,0 +1,21 @@
+
+<div *ngFor="let book of photobooks">
+  <app-grid (valueChange)='getPhotobooks()' [photobook]="book"></app-grid>
+</div>
+<div class="center-screen">
+  <mat-card class="the-container">
+    <mat-card-content class="">
+      <div>
+        <mat-grid-list cols="1" rowHeight="80"  gutterSize="2">
+          <mat-grid-tile class="add-menu" rowspan="1" colspan="1" >
+            <div>
+              <button (click)="addPhotobook()" mat-mini-fab>
+                <mat-icon>add</mat-icon>
+              </button>
+            </div>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
